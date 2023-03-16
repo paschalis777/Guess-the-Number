@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Guess the Number</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+      }
+      h1 {
+        margin-top: 20px;
+      }
+      input[type="number"] {
+        font-size: 16px;
+        padding: 5px 10px;
+        margin-top: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        outline: none;
+      }
+      button {
+        background-color: #4CAF50;
+        color: white;
+        font-size: 16px;
+        padding: 10px 20px;
+        margin-top: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      #message {
+        margin-top: 20px;
+        font-size: 24px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Guess the Number</h1>
+    <p>Guess a number between 1 and 100:</p>
+    <input type="number" id="guess" min="1" max="100" />
+    <br />
+    <button id="guess-btn">Guess</button>
+    <p id="message"></p>
+    <script src="game.js"></script>
+    <script> // Generate a random number between 1 and 100
+      const numberToGuess = Math.floor(Math.random() * 100) + 1;
+      
+      // Get references to the HTML elements we need to interact with
+      const guessInput = document.getElementById('guess');
+      const guessButton = document.getElementById('guess-btn');
+      const messageEl = document.getElementById('message');
+      
+      // Initialize the number of attempts the player has made
+      let attempts = 0;
+      
+      // Add click event listener to the guess button
+      guessButton.addEventListener('click', handleGuess);
+      
+      // Handle a guess from the player
+      function handleGuess() {
+        // Get the player's guess from the input field
+        const guess = parseInt(guessInput.value);
+      
+        // Check if the player's guess is correct
+        if (guess === numberToGuess) {
+          // Display a winning message
+          messageEl.textContent = `Congratulations! You guessed the number in ${attempts} attempts.`;
+          // Disable the guess button and input field
+          guessInput.disabled = true;
+          guessButton.disabled = true;
+        } else {
+          // Increment the number of attempts
+          attempts++;
+          // Give a hint to help the player narrow down their guess
+          if (guess < numberToGuess) {
+            messageEl.textContent = 'Too low. Try again.';
+          } else {
+            messageEl.textContent = 'Too high. Try again.';
+          }
+        }
+      }
+      </script>
+  </body>
+</html>
