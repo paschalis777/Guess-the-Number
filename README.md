@@ -7,3 +7,4 @@ After each guess, the game tells the player whether their guess was too high or 
 The player continues to guess until they correctly guess the number.
 The game ends and congratulates the player once they correctly guess the number.
 The game allows the player to play again with a new randomly generated number.
+![alt text](43864185-df000f5a-9b13-11e8-8f00-2e2cd049dd0f.png)
